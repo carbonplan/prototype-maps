@@ -17,7 +17,7 @@ const Sidebar = () => {
       }}
     >
       <SidebarComponent expanded>
-        <Box sx={{ mt: -7 }}>
+        <Box sx={{ mt: -6 }}>
           <Box as='h1' variant='styles.h4'>
             Visualizing Zarr data
           </Box>
