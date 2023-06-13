@@ -10,7 +10,7 @@ export function getStaticPaths() {
         dataset: d.id,
       },
     })),
-    fallback: true,
+    fallback: false,
   }
 }
 
