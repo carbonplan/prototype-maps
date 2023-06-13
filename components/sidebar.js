@@ -2,7 +2,8 @@ import {
   Sidebar as SidebarComponent,
   SidebarDivider,
 } from '@carbonplan/layouts'
-import { Box } from 'theme-ui'
+import { Box, Flex } from 'theme-ui'
+import Datasets from './datasets'
 import TimeSlider from './time-slider'
 
 const Sidebar = () => {
@@ -10,7 +11,7 @@ const Sidebar = () => {
     <Box
       id='test'
       sx={{
-        '& :first-child': {
+        '& div:first-child': {
           borderBottom: 0,
         },
       }}
@@ -30,7 +31,10 @@ const Sidebar = () => {
 
         <SidebarDivider sx={{ my: 4 }} />
 
-        <TimeSlider />
+        <Flex sx={{ flexDirection: 'column', gap: 3 }}>
+          <Datasets />
+          <TimeSlider />
+        </Flex>
       </SidebarComponent>
     </Box>
   )

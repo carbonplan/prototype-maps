@@ -3,20 +3,19 @@ import { Box, Container, useThemeUI } from 'theme-ui'
 import { Dimmer, Guide, Meta } from '@carbonplan/components'
 import { Map, Raster, Fill, Line, RegionPicker } from '@carbonplan/maps'
 import { useThemedColormap } from '@carbonplan/colormaps'
-import DATASETS from '../data/zarr-v2'
-import Sidebar from '../components/sidebar'
-import { useAppContext } from '../components/app-context'
+import Sidebar from './sidebar'
+import { useAppContext } from './app-context'
 
 const bucket = 'https://storage.googleapis.com/carbonplan-maps/'
 
-const Index = () => {
+const ZarrV2 = ({ dataset }) => {
   const { theme } = useThemeUI()
   const [colormapName, setColormapName] = useState('warm')
   const colormap = useThemedColormap(colormapName)
   const { time } = useAppContext()
   const [showRegionPicker, setShowRegionPicker] = useState(false)
   const [regionData, setRegionData] = useState({ loading: true })
-  const { source, clim, variable } = DATASETS[0]
+  const { source, clim, variable } = dataset
 
   return (
     <>
@@ -45,6 +44,7 @@ const Index = () => {
             variable={'land'}
           />
           <Raster
+            key={source}
             colormap={colormap}
             clim={clim}
             mode={'texture'}
@@ -69,4 +69,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default ZarrV2

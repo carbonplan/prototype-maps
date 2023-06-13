@@ -1,5 +1,5 @@
 import { Column, Row, Slider } from '@carbonplan/components'
-import { MONTHS } from '../data/zarr-v2'
+import { MONTHS } from '../data/coordinates'
 import { useAppContext } from './app-context'
 
 const TimeSlider = () => {

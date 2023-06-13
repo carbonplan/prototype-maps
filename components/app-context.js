@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import { MONTHS } from '../data/zarr-v2'
+import { MONTHS } from '../data/coordinates'
 
 const AppContext = createContext({})
 
