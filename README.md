@@ -3,9 +3,9 @@
   height='48'
 />
 
-# carbonplan / simple-site
+# carbonplan / prototype maps
 
-**website template using our stack**
+**⚠️ Work in progress ⚠️ a basic demonstration of different mapping approaches**
 
 [![GitHub][github-badge]][github]
 ![MIT License][]
@@ -14,7 +14,7 @@
 [github-badge]: https://flat.badgen.net/badge/-/github?icon=github&label
 [mit license]: https://flat.badgen.net/badge/license/MIT/blue
 
-This repository is a super simple website set up using the basic components of our web stack and design system: React, Next, ThemeUI, our components, and our theme.
+This repository contains a Next.js app for demonstrating different mapping approaches. Currently, only "direct client" mapping using `@carbonplan/maps` is included.
 
 ## usage
 
@@ -31,4 +31,4 @@ All the code in this repository is [MIT](https://choosealicense.com/licenses/mit
 
 ## about us
 
-CarbonPlan is a non-profit organization that uses data and science for climate action. We aim to improve the transparency and scientific integrity of climate solutions with open data and tools. Find out more at [carbonplan.org](https://carbonplan.org/) or get in touch by [opening an issue](https://github.com/carbonplan/simple-site/issues/new) or [sending us an email](mailto:hello@carbonplan.org).
+CarbonPlan is a non-profit organization that uses data and science for climate action. We aim to improve the transparency and scientific integrity of climate solutions with open data and tools. Find out more at [carbonplan.org](https://carbonplan.org/) or get in touch by [opening an issue](https://github.com/carbonplan/prototype-maps/issues/new) or [sending us an email](mailto:hello@carbonplan.org).
