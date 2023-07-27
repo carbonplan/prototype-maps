@@ -12,12 +12,12 @@ const TimeSlider = () => {
       </Column>
       <Column start={2} width={2}>
         <Slider
-          min={0}
-          max={DAYS.length - 1}
+          min={DAYS[0]}
+          max={DAYS[1]}
           step={1}
           sx={{ width: '100%', display: 'inline-block' }}
-          value={DAYS.indexOf(time)}
-          onChange={(e) => setTime(DAYS[e.target.value])}
+          value={time}
+          onChange={(e) => setTime(parseFloat(e.target.value))}
         />
       </Column>
     </Row>
