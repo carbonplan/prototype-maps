@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import { MONTHS } from '../data/coordinates'
+import { DAYS } from '../data/coordinates'
 
 const AppContext = createContext({})
 
@@ -8,7 +8,7 @@ export const useAppContext = () => {
 }
 
 export const AppProvider = ({ children }) => {
-  const [time, setTime] = useState(MONTHS[0])
+  const [time, setTime] = useState(DAYS[0])
 
   return (
     <AppContext.Provider value={{ time, setTime }}>

@@ -1,48 +1,48 @@
-import { MONTHS } from './coordinates'
+import { DAYS } from './coordinates'
 
 const DATASETS = [
   {
     id: 'c2',
     source:
-      'https://carbonplan-benchmarks.s3-us-west-2.amazonaws.com/data/c2/nex-gddp-cmip6/monthly/CMIP6_ensemble_median/tasmax/tasmax_month_ensemble-median_historical.zarr',
+      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v2-3857-0',
     clim: [220, 320],
     variable: 'tasmax',
     selectors: {
       // non-spatial dimensions
-      time: MONTHS,
+      time: DAYS,
     },
   },
   {
     id: 'c3',
     source:
-      'https://carbonplan-benchmarks.s3-us-west-2.amazonaws.com/data/c3/nex-gddp-cmip6/monthly/CMIP6_ensemble_median/tasmax/tasmax_month_ensemble-median_historical.zarr',
+      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v2-3857-1',
     clim: [220, 320],
     variable: 'tasmax',
     selectors: {
       // non-spatial dimensions
-      time: MONTHS,
+      time: DAYS,
     },
   },
   {
     id: 'c4',
     source:
-      'https://carbonplan-benchmarks.s3-us-west-2.amazonaws.com/data/c4/nex-gddp-cmip6/monthly/CMIP6_ensemble_median/tasmax/tasmax_month_ensemble-median_historical.zarr',
+      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v2-3857-2',
     clim: [220, 320],
     variable: 'tasmax',
     selectors: {
       // non-spatial dimensions
-      time: MONTHS,
+      time: DAYS,
     },
   },
   {
     id: 'c5',
     source:
-      'https://carbonplan-benchmarks.s3-us-west-2.amazonaws.com/data/c5/nex-gddp-cmip6/monthly/CMIP6_ensemble_median/tasmax/tasmax_month_ensemble-median_historical.zarr',
+      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v2-3857-3',
     clim: [220, 320],
     variable: 'tasmax',
     selectors: {
       // non-spatial dimensions
-      time: MONTHS,
+      time: DAYS,
     },
   },
 ]
