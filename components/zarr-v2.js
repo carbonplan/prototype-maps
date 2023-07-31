@@ -8,6 +8,8 @@ import { useAppContext } from './app-context'
 
 const bucket = 'https://storage.googleapis.com/carbonplan-maps/'
 
+const WIDTH = 3
+
 const ZarrV2 = ({ dataset }) => {
   const { theme } = useThemeUI()
   const [colormapName, setColormapName] = useState('warm')
@@ -30,8 +32,29 @@ const ZarrV2 = ({ dataset }) => {
         <Guide color='teal' />
       </Container>
 
-      <Sidebar />
-      <Box sx={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }}>
+      <Sidebar width={WIDTH} />
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          right: 0,
+          left: [
+            `calc(${6 - (6 - WIDTH)} * (100vw - 7 * 24px) / 6 + ${
+              12 - (6 - WIDTH)
+            } * 24px)`,
+            `calc(${8 - (6 - WIDTH)} * (100vw - 9 * 32px) / 8 + ${
+              12 - (6 - WIDTH)
+            } * 32px)`,
+            `calc(${12 - (12 - WIDTH)} * (100vw - 13 * 32px) / 12 + ${
+              12 - (12 - WIDTH)
+            } * 32px)`,
+            `calc(${12 - (12 - WIDTH)} * (100vw - 13 * 48px) / 12 + ${
+              12 - (12 - WIDTH)
+            } * 48px)`,
+          ],
+        }}
+      >
         <Map zoom={2} center={[0, 0]}>
           <Fill
             color={theme.rawColors.background}
