@@ -1,5 +1,5 @@
 import { Column, Row, Slider } from '@carbonplan/components'
-import { MONTHS } from '../data/coordinates'
+import { DAYS } from '../data/coordinates'
 import { useAppContext } from './app-context'
 
 const TimeSlider = () => {
@@ -12,12 +12,12 @@ const TimeSlider = () => {
       </Column>
       <Column start={2} width={2}>
         <Slider
-          min={0}
-          max={MONTHS.length - 1}
+          min={DAYS[0]}
+          max={DAYS[1]}
           step={1}
           sx={{ width: '100%', display: 'inline-block' }}
-          value={MONTHS.indexOf(time)}
-          onChange={(e) => setTime(MONTHS[e.target.value])}
+          value={time}
+          onChange={(e) => setTime(parseFloat(e.target.value))}
         />
       </Column>
     </Row>
