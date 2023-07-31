@@ -1,30 +1,15 @@
 import { Column, Row, Select } from '@carbonplan/components'
-import { useRouter } from 'next/router'
 import DATASETS from '../data/datasets'
 
-const Datasets = () => {
-  const router = useRouter()
-
+const Datasets = ({ dataset, disabled, setDataset }) => {
   return (
     <Row columns={3}>
       <Column start={1} width={1}>
         Dataset
       </Column>
       <Column start={2} width={2}>
-        <Select
-          onChange={(e) =>
-            router.query.dataset
-              ? router.push({
-                  pathname: router.pathname,
-                  query: { dataset: e.target.value },
-                })
-              : router.push({
-                  pathname: `${router.pathname}/[dataset]`,
-                  query: { dataset: e.target.value },
-                })
-          }
-          value={router.query.dataset ?? DATASETS[0]}
-        >
+        <Select disabled={disabled} onChange={setDataset} value={dataset}>
+          {!dataset && <option />}
           {DATASETS.map((d) => (
             <option key={d} value={d}>
               {d}
