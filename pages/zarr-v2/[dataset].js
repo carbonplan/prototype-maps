@@ -16,6 +16,6 @@ export function getStaticPaths() {
 
 export function getStaticProps({ params: { dataset } }) {
   return {
-    props: { dataset: DATASETS.find((d) => d.id === dataset) },
+    props: { id: 'Zarr v2', dataset: DATASETS.find((d) => d.id === dataset) },
   }
 }

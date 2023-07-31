@@ -5,6 +5,6 @@ export default ZarrV2
 
 export function getStaticProps() {
   return {
-    props: { dataset: DATASETS[0] },
+    props: { id: 'Zarr v2', dataset: DATASETS[0] },
   }
 }
