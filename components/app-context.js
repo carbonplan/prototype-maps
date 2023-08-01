@@ -7,11 +7,11 @@ export const useAppContext = () => {
   return useContext(AppContext)
 }
 
-export const AppProvider = ({ children }) => {
+export const AppProvider = ({ dataset, datasets = [], children }) => {
   const [time, setTime] = useState(DAYS[0])
 
   return (
-    <AppContext.Provider value={{ time, setTime }}>
+    <AppContext.Provider value={{ dataset, datasets, time, setTime }}>
       {children}
     </AppContext.Provider>
   )

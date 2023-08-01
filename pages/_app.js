@@ -13,7 +13,7 @@ const WIDTH = 3
 const App = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
-      <AppProvider>
+      <AppProvider {...pageProps}>
         <Meta
           card={'https://images.carbonplan.org/social/maps-demo.png'}
           description={

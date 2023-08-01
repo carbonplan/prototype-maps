@@ -48,12 +48,11 @@ const Sidebar = () => {
         <Flex sx={{ flexDirection: 'column', gap: 3 }}>
           <Approach approach={approach} setApproach={setApproach} />
           <Datasets
-            dataset={router.query.dataset}
             disabled={!approach}
             setDataset={(e) =>
               approach &&
               router.push({
-                pathname: `/${approach}/[dataset]`,
+                pathname: `/${approach}/v2/[dataset]`,
                 query: { dataset: e.target.value },
               })
             }

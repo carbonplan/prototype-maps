@@ -1,18 +1,20 @@
 import { Column, Row, Select } from '@carbonplan/components'
-import DATASETS from '../data/datasets'
+import { useAppContext } from './app-context'
 
-const Datasets = ({ dataset, disabled, setDataset }) => {
+const Datasets = ({ disabled, setDataset }) => {
+  const { dataset, datasets } = useAppContext()
+
   return (
     <Row columns={3}>
       <Column start={1} width={1}>
         Dataset
       </Column>
       <Column start={2} width={2}>
-        <Select disabled={disabled} onChange={setDataset} value={dataset}>
+        <Select disabled={disabled} onChange={setDataset} value={dataset?.id}>
           {!dataset && <option />}
-          {DATASETS.map((d) => (
-            <option key={d} value={d}>
-              {d}
+          {datasets.map((d) => (
+            <option key={d.id} value={d.id}>
+              {d.id}
             </option>
           ))}
         </Select>
