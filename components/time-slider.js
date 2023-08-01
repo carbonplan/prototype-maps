@@ -1,9 +1,10 @@
 import { Column, Row, Slider } from '@carbonplan/components'
-import { DAYS } from '../data/coordinates'
 import { useAppContext } from './app-context'
 
-const TimeSlider = () => {
-  const { time, setTime } = useAppContext()
+const TimeSlider = ({ disabled }) => {
+  const { dataset, time, setTime } = useAppContext()
+
+  if (time == null) return null
 
   return (
     <Row columns={3}>
@@ -12,10 +13,15 @@ const TimeSlider = () => {
       </Column>
       <Column start={2} width={2}>
         <Slider
-          min={DAYS[0]}
-          max={DAYS[1]}
+          disabled={disabled}
+          min={dataset.selectors.time[0]}
+          max={dataset.selectors.time[1]}
           step={1}
-          sx={{ width: '100%', display: 'inline-block' }}
+          sx={{
+            width: '100%',
+            display: 'inline-block',
+            '&:disabled': { color: 'muted' },
+          }}
           value={time}
           onChange={(e) => setTime(parseFloat(e.target.value))}
         />
