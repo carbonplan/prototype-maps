@@ -13,7 +13,7 @@ export const useAppContext = () => {
   return useContext(AppContext)
 }
 
-export const AppProvider = ({ dataset, datasets = [], children }) => {
+export const AppProvider = ({ dataset, datasets, children }) => {
   const router = useRouter()
   const [time, setTime] = useState(dataset?.selectors?.time[0])
   const [approach] = router.pathname.split('/').filter(Boolean)

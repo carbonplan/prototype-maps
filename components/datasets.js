@@ -6,7 +6,7 @@ const Datasets = ({ disabled }) => {
   const router = useRouter()
   const { dataset, setDataset, datasets } = useAppContext()
 
-  if (!datasets || datasets.length === 0) {
+  if (!datasets) {
     return null
   }
 
