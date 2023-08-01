@@ -47,6 +47,13 @@ export const AppProvider = ({ dataset, datasets = [], children }) => {
     [approach, router.query]
   )
 
+  const setVersion = useCallback(
+    (v) => {
+      router.push(`/${approach}/${v}`)
+    },
+    [approach]
+  )
+
   return (
     <AppContext.Provider
       value={{
@@ -58,6 +65,7 @@ export const AppProvider = ({ dataset, datasets = [], children }) => {
         datasets,
         time,
         setTime,
+        setVersion,
       }}
     >
       {children}

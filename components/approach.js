@@ -39,6 +39,7 @@ const Radio = ({ name, checked, label, value, onChange, sx }) => {
 
 const Approach = () => {
   const { approach, setApproach } = useAppContext()
+
   return (
     <Flex>
       <Radio

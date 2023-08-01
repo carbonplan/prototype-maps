@@ -39,16 +39,12 @@ const Sidebar = () => {
         <SidebarDivider sx={{ my: 4 }} />
 
         <Flex sx={{ flexDirection: 'column', gap: 3 }}>
-          <Approach approach={approach} />
+          <Approach />
 
-          {approach === 'direct-client' && (
-            <Version
-              version={version}
-              setVersion={(e) => router.push(`/${approach}/${e.target.value}`)}
-            />
-          )}
+          <Version />
 
           <Datasets />
+
           {dataset && <TimeSlider />}
         </Flex>
       </SidebarComponent>
