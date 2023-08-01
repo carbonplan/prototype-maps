@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 
 const bucket = 'https://storage.googleapis.com/carbonplan-maps/'
 
-const ZarrV2 = ({ version, dataset }) => {
+const DirectClient = ({ version, dataset }) => {
   const { theme } = useThemeUI()
   const [colormapName, setColormapName] = useState('warm')
   const colormap = useThemedColormap(colormapName)
@@ -52,7 +52,7 @@ const ZarrV2 = ({ version, dataset }) => {
   )
 }
 
-export default ZarrV2
+export default DirectClient
 
 export function getStaticPaths() {
   return {
