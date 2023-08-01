@@ -1,4 +1,4 @@
-import { DAYS } from './coordinates'
+const DAYS = [0, 729]
 
 export const V2_DATASETS = [
   {

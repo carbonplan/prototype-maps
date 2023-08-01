@@ -5,22 +5,15 @@ import {
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { Box, Flex } from 'theme-ui'
+import { useAppContext } from './app-context'
 import Approach from './approach'
 import Datasets from './datasets'
 import TimeSlider from './time-slider'
+import Version from './version'
 
 const Sidebar = () => {
   const router = useRouter()
-  const [approach, setApproach] = useState(null)
-
-  useEffect(() => {
-    if (router.pathname) {
-      const [approachPath] = router.pathname.split('/').filter(Boolean)
-      if (approachPath) {
-        setApproach(approachPath)
-      }
-    }
-  }, [router.pathname])
+  const { approach, dataset, datasets, version } = useAppContext()
 
   return (
     <Box
@@ -46,18 +39,17 @@ const Sidebar = () => {
         <SidebarDivider sx={{ my: 4 }} />
 
         <Flex sx={{ flexDirection: 'column', gap: 3 }}>
-          <Approach approach={approach} setApproach={setApproach} />
-          <Datasets
-            disabled={!approach}
-            setDataset={(e) =>
-              approach &&
-              router.push({
-                pathname: `/${approach}/v2/[dataset]`,
-                query: { dataset: e.target.value },
-              })
-            }
-          />
-          <TimeSlider disabled={!approach} />
+          <Approach approach={approach} />
+
+          {approach === 'direct-client' && (
+            <Version
+              version={version}
+              setVersion={(e) => router.push(`/${approach}/${e.target.value}`)}
+            />
+          )}
+
+          <Datasets />
+          {dataset && <TimeSlider />}
         </Flex>
       </SidebarComponent>
     </Box>

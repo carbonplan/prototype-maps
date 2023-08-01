@@ -1,4 +1,5 @@
 import { Flex, Label, Radio as ThemeRadio } from 'theme-ui'
+import { useAppContext } from './app-context'
 
 const Radio = ({ name, checked, label, value, onChange, sx }) => {
   return (
@@ -36,7 +37,8 @@ const Radio = ({ name, checked, label, value, onChange, sx }) => {
   )
 }
 
-const Approach = ({ approach, setApproach }) => {
+const Approach = () => {
+  const { approach, setApproach } = useAppContext()
   return (
     <Flex>
       <Radio
