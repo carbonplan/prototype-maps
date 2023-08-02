@@ -27,7 +27,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
 
   const setApproach = useCallback((a) => {
     if (a === 'direct-client') {
-      router.push('/direct-client/v3/c2')
+      router.push('/direct-client/v3/1MB-chunks')
     } else {
       router.push('/tiling')
     }
