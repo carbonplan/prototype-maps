@@ -12,10 +12,10 @@ const Datasets = ({ disabled }) => {
 
   return (
     <Row columns={3}>
-      <Column start={1} width={2}>
+      <Column start={1} width={1}>
         Dataset
       </Column>
-      <Column start={3} width={1}>
+      <Column start={2} width={2}>
         <Select
           disabled={disabled}
           onChange={(e) => setDataset(e.target.value)}
@@ -25,7 +25,7 @@ const Datasets = ({ disabled }) => {
           {!dataset && <option />}
           {datasets.map((d) => (
             <option key={d.id} value={d.id}>
-              {d.id}
+              {d.label ?? d.id.replace('-', ' ')}
             </option>
           ))}
         </Select>

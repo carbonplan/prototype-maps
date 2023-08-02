@@ -8,10 +8,10 @@ const Version = () => {
 
   return (
     <Row columns={3}>
-      <Column start={1} width={2}>
+      <Column start={1} width={1}>
         Zarr version
       </Column>
-      <Column start={3} width={1}>
+      <Column start={2} width={2}>
         <Select onChange={(e) => setVersion(e.target.value)} value={version}>
           <option value={'v2'}>v2</option>
           <option value={'v3'}>v3</option>
