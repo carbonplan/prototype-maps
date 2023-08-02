@@ -25,7 +25,7 @@ const DirectClient = ({ version, dataset }) => {
   const { source, clim, variable } = dataset
 
   return (
-    <Map zoom={2} center={[0, 0]} key={router.asPath}>
+    <Map zoom={0} center={[0, 0]} key={router.asPath}>
       <Fill
         color={theme.rawColors.background}
         source={bucket + 'basemaps/ocean'}
