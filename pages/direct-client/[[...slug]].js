@@ -44,6 +44,7 @@ const DirectClient = ({ version, dataset }) => {
         source={source}
         variable={variable}
         version={version}
+        fillValue={9.969209968386869e36}
         projection={version === 'v3' ? 'equirectangular' : 'mercator'}
         selector={{ time }}
         regionOptions={{ setData: setRegionData }}
