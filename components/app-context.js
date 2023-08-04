@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from 'react'
+import { tileData } from '../data/tiling'
 
 const AppContext = createContext({})
 
@@ -29,7 +30,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
     if (a === 'direct-client') {
       router.push('/direct-client/v3/1MB-chunks')
     } else {
-      router.push('/tiling')
+      router.push(`/tiling/${tileData[0].id}`)
     }
   }, [])
 
@@ -41,7 +42,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
           query: { slug: [router.query.slug[0], id] },
         })
       } else {
-        router.push(`/tiling/${id}`)
+        router.push(`/tiling/${tileData[0].id}`)
       }
     },
     [approach, router.query]

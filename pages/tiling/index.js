@@ -1,13 +1,13 @@
 import EmptyState from '../../components/empty-state'
 import TitilerZarr from '../../components/titiler'
+import { tileData } from '../../data/tiling'
 
-const DATASETS = []
+const DATASETS = tileData
 
 const Tiling = ({ dataset }) => {
   if (!dataset) {
     return <EmptyState />
-  }
-  // else return <TitilerZarr />
+  } else return <TitilerZarr />
 }
 
 export default Tiling
