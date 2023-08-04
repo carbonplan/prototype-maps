@@ -42,7 +42,9 @@ export const AppProvider = ({ dataset, datasets, children }) => {
           query: { slug: [router.query.slug[0], id] },
         })
       } else {
-        router.push(`/tiling/${tileData[0].id}`)
+        router.push({
+          pathname: '/tiling/' + id
+        })
       }
     },
     [approach, router.query]

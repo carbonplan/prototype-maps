@@ -1,87 +1,90 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import { Box, Container, useThemeUI } from 'theme-ui'
-import axios from 'axios'
 import getConfig from 'next/config'
+import { useAppContext } from '../app-context'
 
-const querystring = require('querystring');
-const { publicRuntimeConfig } = getConfig()
+const querystring = require('querystring')
 
-mapboxgl.accessToken = publicRuntimeConfig.MAPBOX_TOKEN
-const XARRAY_TILER_ENDPOINT = 'https://dev-titiler-xarray.delta-backend.com/tilejson.json'
-const API_STAC_ENDPOINT = 'https://staging-stac.delta-backend.com/'
-const stacCollectionID = 'oco2-geos-l3-daily'
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
 
-const tileData = {
-    resampling_method:'bilinear',
-    variable:'XCO2',
-    colormap_name:'rdylbu_r',
-    rescale:'0.00039394,0.000420'
-}
+const zarr_layer_id = 'zarr_layer'
+const zarr_source_id = 'zarr_source'
+
+// https://dev-titiler-xarray.delta-backend.com/map?url=s3://nasa-eodc-data-store/600_1440_1_no-coord-chunks/CMIP6_daily_GISS-E2-1-G_tas.zarr&variable=tas&rescale=200,300
+const XARRAY_TILER_ENDPOINT =
+  'https://dev-titiler-xarray.delta-backend.com/tilejson.json'
 
 export default function SimpleMap() {
-  const mapRef = useRef(null);
-  const [zarrTileParams, setZarrTileParams] = useState('')
-  const [mapStyle, setMapStyle] = useState(undefined)
-  const [baseStyle, setBaseStyle] = useState(undefined);
-  
+  const mapRef = useRef(null)
+
+  const { dataset } = useAppContext()
+
   useEffect(() => {
     if (!mapRef.current) return
     const mbMap = new mapboxgl.Map({
       container: mapRef.current,
       attributionControl: false,
       style: 'mapbox://styles/mapbox/light-v11',
-      zoom: 4
-    });
-    mapRef.current = mbMap;
-    const controller = new AbortController();
-    async function getTileParams() {
-        const stacRes = await axios.get(`${API_STAC_ENDPOINT}/collections/${stacCollectionID}`, {
-            signal: controller.signal
-         });
-        const zarrAssetUrl = stacRes.data.assets.zarr.href;
+      zoom: 4,
+    })
+    mapRef.current = mbMap
 
-        const tileParams = {
-            url: zarrAssetUrl,
-            time_slice: '2015-01-01T05%3A00%3A00.000Z', // Fixing time for now
-            ...tileData
-        }
-        setZarrTileParams(querystring.stringify(tileParams))
-    }
-    getTileParams()
+    mapRef.current.on('load', () => {
+      const tileParams = {
+        url: dataset.source,
+        variable: dataset.variable,
+        rescale: dataset.rescale,
+        // time_slice: '2020-01-01', // Fixing time for now
+      }
+      const zarrSource = {
+        type: 'raster',
+        url: `${XARRAY_TILER_ENDPOINT}?${querystring.stringify(tileParams)}`,
+      }
+
+      const zarrLayer = {
+        id: zarr_layer_id,
+        type: 'raster',
+        source: zarr_source_id,
+        metadata: {
+          layerOrderPosition: 'raster',
+        },
+      }
+
+      mapRef.current.addSource(zarr_source_id, zarrSource)
+      mapRef.current.addLayer(zarrLayer)
+    })
+
     return () => {
-        controller.abort();
-      };
+      mapRef.current = null
+      if (mapRef.current?.getSource(zarr_source_id)) {
+        mapRef.current.removeLayer(zarr_layer_id)
+        mapRef.current.removeSource(zarr_source_id)
+      }
+    }
   }, [])
 
   useEffect(() => {
-    if (!zarrTileParams || !mapRef.current) return
-    const zarrSource = {
-        type: 'raster',
-        url: `${XARRAY_TILER_ENDPOINT}?${zarrTileParams}`
-      };
+    if (!mapRef.current) return
+    const zarrSource = mapRef.current.getSource(zarr_source_id)
+    if (!zarrSource) return
 
-      const zarrLayer = {
-        id: 'zarr',
-        type: 'raster',
-        source: 'zarr',
-        metadata: {
-          layerOrderPosition: 'raster'
-        }
-      };
+    const tileParamsToUpdate = {
+      url: dataset.source,
+      variable: dataset.variable,
+      rescale: dataset.rescale,
+      // time_slice: '2020-01-01', // Fixing time for now
+    }
+    const urlToUpdate = `${XARRAY_TILER_ENDPOINT}?${querystring.stringify(
+      tileParamsToUpdate
+    )}`
 
-    //   const sources = {
-    //     'zarr': zarrSource
-    //   };
-    //   const layers = [zarrLayer];
-      
-      mapRef.current.addSource('zarr', zarrSource)
-      mapRef.current.addLayer(zarrLayer)
+    zarrSource.setUrl(urlToUpdate)
+  }, [JSON.stringify(dataset)])
 
-  },[zarrTileParams])
-
-
-  return <Box sx={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }}>
-    <div style={{width: '100%', height: '100%'}} ref={mapRef}></div>
-  </Box>
+  return (
+    <Box sx={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }}>
+      <div style={{ width: '100%', height: '100%' }} ref={mapRef}></div>
+    </Box>
+  )
 }
