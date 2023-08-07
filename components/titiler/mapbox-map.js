@@ -31,15 +31,11 @@ export default function SimpleMap() {
     mapRef.current = mbMap
 
     mapRef.current.on('load', () => {
-      const tileParams = {
-        url: dataset.source,
-        variable: dataset.variable,
-        rescale: dataset.rescale,
-        // time_slice: '2020-01-01', // Fixing time for now
-      }
       const zarrSource = {
         type: 'raster',
-        url: `${XARRAY_TILER_ENDPOINT}?${querystring.stringify(tileParams)}`,
+        url: `${XARRAY_TILER_ENDPOINT}?${querystring.stringify(
+          dataset.tilerParams
+        )}`,
       }
 
       const zarrLayer = {
@@ -69,14 +65,8 @@ export default function SimpleMap() {
     const zarrSource = mapRef.current.getSource(zarr_source_id)
     if (!zarrSource) return
 
-    const tileParamsToUpdate = {
-      url: dataset.source,
-      variable: dataset.variable,
-      rescale: dataset.rescale,
-      // time_slice: '2020-01-01', // Fixing time for now
-    }
     const urlToUpdate = `${XARRAY_TILER_ENDPOINT}?${querystring.stringify(
-      tileParamsToUpdate
+      dataset.tilerParams
     )}`
 
     zarrSource.setUrl(urlToUpdate)
