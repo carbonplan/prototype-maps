@@ -7,7 +7,7 @@ export const tileData = [
         's3://nasa-eodc-data-store/600_1440_1_no-coord-chunks/CMIP6_daily_GISS-E2-1-G_tas.zarr',
       variable: 'tas',
       rescale: '200,300',
-      maxzoom: 16,
+      maxzoom: 11,
     },
     selectors: {
       // non-spatial dimensions
@@ -21,7 +21,7 @@ export const tileData = [
         's3://nasa-eodc-data-store/600_1440_1_no-coord-chunks/CMIP6_daily_GISS-E2-1-G_tas.zarr',
       variable: 'tas',
       rescale: '200,1300',
-      maxzoom: 16,
+      maxzoom: 11,
     },
     selectors: {
       // non-spatial dimensions
