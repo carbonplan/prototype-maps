@@ -4,7 +4,7 @@ import { useAppContext } from './app-context'
 const Version = () => {
   const { approach, version, setVersion } = useAppContext()
 
-  if (approach !== 'direct-client') return null
+  if (approach !== 'dynamic-client') return null
 
   return (
     <Row columns={3}>

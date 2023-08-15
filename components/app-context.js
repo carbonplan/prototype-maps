@@ -26,8 +26,8 @@ export const AppProvider = ({ dataset, datasets, children }) => {
   }, [!!dataset])
 
   const setApproach = useCallback((a) => {
-    if (a === 'direct-client') {
-      router.push('/direct-client/v3')
+    if (a === 'dynamic-client') {
+      router.push('/dynamic-client/v3')
     } else {
       router.push('/tiling')
     }
@@ -35,9 +35,9 @@ export const AppProvider = ({ dataset, datasets, children }) => {
 
   const setDataset = useCallback(
     (id) => {
-      if (approach === 'direct-client') {
+      if (approach === 'dynamic-client') {
         router.push({
-          pathname: '/direct-client/[[...slug]]',
+          pathname: '/dynamic-client/[[...slug]]',
           query: { slug: [router.query.slug[0], id] },
         })
       } else {

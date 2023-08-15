@@ -14,7 +14,7 @@
 [github-badge]: https://flat.badgen.net/badge/-/github?icon=github&label
 [mit license]: https://flat.badgen.net/badge/license/MIT/blue
 
-This repository contains a Next.js app for demonstrating different mapping approaches. Currently, only "direct client" mapping using `@carbonplan/maps` is included.
+This repository contains a Next.js app for demonstrating different mapping approaches.
 
 ## usage
 

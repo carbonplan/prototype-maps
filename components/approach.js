@@ -51,10 +51,10 @@ const Approach = () => {
       />
       <Radio
         name='approach'
-        checked={approach === 'direct-client'}
-        label='Direct client'
-        value='direct-client'
-        onChange={() => setApproach('direct-client')}
+        checked={approach === 'dynamic-client'}
+        label='Dynamic client'
+        value='dynamic-client'
+        onChange={() => setApproach('dynamic-client')}
       />
     </Flex>
   )

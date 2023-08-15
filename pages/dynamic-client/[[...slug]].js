@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 
 const bucket = 'https://storage.googleapis.com/carbonplan-maps/'
 
-const DirectClient = ({ version, dataset }) => {
+const DynamicClient = ({ version, dataset }) => {
   const { theme } = useThemeUI()
   const [colormapName, setColormapName] = useState('warm')
   const colormap = useThemedColormap(colormapName)
@@ -52,7 +52,7 @@ const DirectClient = ({ version, dataset }) => {
   )
 }
 
-export default DirectClient
+export default DynamicClient
 
 export function getStaticPaths() {
   return {
