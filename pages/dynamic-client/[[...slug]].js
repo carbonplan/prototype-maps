@@ -3,7 +3,7 @@ import { useThemeUI } from 'theme-ui'
 import { Map, Raster, Fill, Line, RegionPicker } from '@carbonplan/maps'
 import { useThemedColormap } from '@carbonplan/colormaps'
 import { useAppContext } from '../../components/app-context'
-import { V2_DATASETS, V3_DATASETS } from '../../data/direct-client'
+import { V2_DATASETS, V3_DATASETS } from '../../data/dynamic-client'
 import EmptyState from '../../components/empty-state'
 import { useRouter } from 'next/router'
 
