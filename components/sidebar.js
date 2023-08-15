@@ -1,9 +1,8 @@
+import { Link } from '@carbonplan/components'
 import {
   Sidebar as SidebarComponent,
   SidebarDivider,
 } from '@carbonplan/layouts'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 import { Box, Flex } from 'theme-ui'
 import { useAppContext } from './app-context'
 import Approach from './approach'
@@ -12,8 +11,7 @@ import TimeSlider from './time-slider'
 import Version from './version'
 
 const Sidebar = () => {
-  const router = useRouter()
-  const { approach, dataset, datasets, version } = useAppContext()
+  const { dataset } = useAppContext()
 
   return (
     <Box
@@ -32,7 +30,11 @@ const Sidebar = () => {
           <Box>
             This is an interactive demonstration of different visualization
             approaches for visualizing geospatial data stored in Zarr. For more
-            information, read the report or our blog post.
+            information, read the{' '}
+            <Link href='https://nasa-impact.github.io/zarr-visualization-cookbook/'>
+              cookbook
+            </Link>{' '}
+            or our blog post.
           </Box>
         </Box>
 
