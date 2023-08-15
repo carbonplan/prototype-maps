@@ -16,7 +16,7 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        '& div:first-child': {
+        '& div:first-of-type': {
           borderBottom: 0,
         },
       }}
