@@ -25,6 +25,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
   useEffect(() => {
     if (dataset?.selectors?.time) {
       setTime(dataset?.selectors?.time[0])
+      setClim(dataset?.clim)
     }
   }, [!!dataset])
 

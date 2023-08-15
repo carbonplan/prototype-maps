@@ -6,7 +6,9 @@ import {
 import { Box, Flex } from 'theme-ui'
 import { useAppContext } from './app-context'
 import Approach from './approach'
+import Customizations from './customizations'
 import Datasets from './datasets'
+import TimeSeries from './time-series'
 import TimeSlider from './time-slider'
 import Version from './version'
 
@@ -37,9 +39,7 @@ const Sidebar = () => {
             or our blog post.
           </Box>
         </Box>
-
         <SidebarDivider sx={{ my: 4 }} />
-
         <Flex sx={{ flexDirection: 'column', gap: 3 }}>
           <Approach />
 
@@ -49,6 +49,11 @@ const Sidebar = () => {
 
           {dataset && <TimeSlider />}
         </Flex>
+        <SidebarDivider sx={{ my: 4 }} />
+        <Customizations />
+        <SidebarDivider sx={{ my: 4 }} />
+        <TimeSeries />
+        <SidebarDivider sx={{ my: 4 }} />
       </SidebarComponent>
     </Box>
   )
