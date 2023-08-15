@@ -17,6 +17,8 @@ export const useAppContext = () => {
 export const AppProvider = ({ dataset, datasets, children }) => {
   const router = useRouter()
   const [time, setTime] = useState(dataset?.selectors?.time[0])
+  const [clim, setClim] = useState(dataset?.clim)
+  const [colormapName, setColormapName] = useState('warm')
   const [approach] = router.pathname.split('/').filter(Boolean)
   const version = router.asPath.split('/').find((d) => d.startsWith('v'))
 
@@ -43,7 +45,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
         })
       } else {
         router.push({
-          pathname: '/tiling/' + id
+          pathname: '/tiling/' + id,
         })
       }
     },
@@ -68,6 +70,10 @@ export const AppProvider = ({ dataset, datasets, children }) => {
         datasets,
         time,
         setTime,
+        clim,
+        setClim,
+        colormapName,
+        setColormapName,
         setVersion,
       }}
     >

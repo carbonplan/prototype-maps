@@ -11,9 +11,8 @@ const bucket = 'https://storage.googleapis.com/carbonplan-maps/'
 
 const DynamicClient = ({ version, dataset }) => {
   const { theme } = useThemeUI()
-  const [colormapName, setColormapName] = useState('warm')
+  const { time, clim, colormapName } = useAppContext()
   const colormap = useThemedColormap(colormapName)
-  const { time } = useAppContext()
   const router = useRouter()
   const [showRegionPicker, setShowRegionPicker] = useState(false)
   const [regionData, setRegionData] = useState({ loading: true })
@@ -22,7 +21,7 @@ const DynamicClient = ({ version, dataset }) => {
     return <EmptyState />
   }
 
-  const { source, clim, variable } = dataset
+  const { source, variable } = dataset
 
   return (
     <Map zoom={0} center={[0, 0]} key={router.asPath}>
