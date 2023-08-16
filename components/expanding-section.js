@@ -12,7 +12,7 @@ const sx = {
   },
 }
 
-const ExpandingSection = ({ label, children }) => {
+const ExpandingSection = ({ label, children, onClick }) => {
   const { approach, dataset } = useAppContext()
   const [expanded, setExpanded] = useState(false)
 
@@ -30,7 +30,12 @@ const ExpandingSection = ({ label, children }) => {
             ? {}
             : { color: 'primary', '& svg': { stroke: 'primary' } },
         }}
-        onClick={() => !disabled && setExpanded(!expanded)}
+        onClick={() => {
+          if (!disabled) {
+            setExpanded(!expanded)
+            onClick && onClick()
+          }
+        }}
       >
         <Box sx={sx.heading}>{label}</Box>
         <Expander
