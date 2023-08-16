@@ -19,6 +19,8 @@ export const AppProvider = ({ dataset, datasets, children }) => {
   const [time, setTime] = useState(dataset?.selectors?.time[0])
   const [clim, setClim] = useState(dataset?.clim)
   const [colormapName, setColormapName] = useState('warm')
+  const [showRegionPicker, setShowRegionPicker] = useState(false)
+  const [regionData, setRegionData] = useState({ loading: true })
   const [approach] = router.pathname.split('/').filter(Boolean)
   const version = router.asPath.split('/').find((d) => d.startsWith('v'))
 
@@ -26,6 +28,8 @@ export const AppProvider = ({ dataset, datasets, children }) => {
     if (dataset?.selectors?.time) {
       setTime(dataset?.selectors?.time[0])
       setClim(dataset?.clim)
+      setShowRegionPicker(false)
+      setRegionData({ loading: true })
     }
   }, [!!dataset])
 
@@ -76,6 +80,10 @@ export const AppProvider = ({ dataset, datasets, children }) => {
         colormapName,
         setColormapName,
         setVersion,
+        showRegionPicker,
+        setShowRegionPicker,
+        regionData,
+        setRegionData,
       }}
     >
       {children}

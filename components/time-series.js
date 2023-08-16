@@ -1,28 +1,36 @@
-import { colormaps, useThemedColormap } from '@carbonplan/colormaps'
-import { Colorbar, Select } from '@carbonplan/components'
+import { AxisLabel, Chart, Grid, TickLabels } from '@carbonplan/charts'
 import { Box } from 'theme-ui'
 import { useAppContext } from './app-context'
 import ExpandingSection from './expanding-section'
 
-const sx = {
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 2,
-    color: 'secondary',
-    fontFamily: 'mono',
-    letterSpacing: 'mono',
-    fontSize: [1, 1, 1, 2],
-    textTransform: 'uppercase',
-  },
-}
-
 const TimeSeries = () => {
-  const colormap = useThemedColormap('warm')
-  const { dataset, clim, setClim, colormapName, setColormapName } =
+  const { dataset, showRegionPicker, setShowRegionPicker, regionData } =
     useAppContext()
 
-  return <ExpandingSection label='Time series'>TK</ExpandingSection>
+  return (
+    <ExpandingSection
+      label='Time series'
+      onClick={() => setShowRegionPicker(!showRegionPicker)}
+    >
+      <Box
+        sx={{
+          width: '100%',
+          height: ['200px', '200px', '125px', '200px'],
+          position: 'relative',
+        }}
+      >
+        {regionData?.value && (
+          <Chart x={[0, 10]} y={[0, 100]}>
+            <Grid horizontal />
+            <Grid vertical />
+            <TickLabels left bottom />
+            <AxisLabel left>{dataset.variable}</AxisLabel>
+            <AxisLabel bottom>Time step</AxisLabel>
+          </Chart>
+        )}
+      </Box>
+    </ExpandingSection>
+  )
 }
 
 export default TimeSeries
