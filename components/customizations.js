@@ -25,12 +25,12 @@ const Customizations = () => {
   return (
     <ExpandingSection label='Customizations'>
       <Box as='label' sx={sx.label}>
-        {dataset.variable}
+        {dataset?.variable}
         <Colorbar
           width='100%'
           colormap={colormap}
           horizontal
-          units={dataset.units}
+          units={dataset?.units}
           clim={clim}
           setClim={setClim}
         />
