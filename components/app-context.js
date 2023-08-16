@@ -7,6 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react'
+import { DATASETS } from '../data/dynamic-client'
 import { tileData } from '../data/tiling'
 
 const AppContext = createContext({})
@@ -18,6 +19,7 @@ export const useAppContext = () => {
 export const AppProvider = ({ dataset, datasets, children }) => {
   const router = useRouter()
   const [time, setTime] = useState(dataset?.selectors?.time[0])
+  const [variable, setVariable] = useState(null)
   const [clim, setClim] = useState(dataset?.clim)
   const [version, setVersion] = useState(dataset?.version)
   const [projection, setProjection] = useState(dataset?.projection)
@@ -46,7 +48,9 @@ export const AppProvider = ({ dataset, datasets, children }) => {
 
   const setApproach = useCallback((a) => {
     if (a === 'dynamic-client') {
-      router.push('/dynamic-client/pyramids-v3-sharded-4326-1MB')
+      const id = 'pyramids-v3-sharded-4326-1MB'
+      setVariable(DATASETS.find((d) => d.id === id).variables[0])
+      router.push(`/dynamic-client/${id}`)
     } else {
       router.push(`/tiling/${tileData[0].id}`)
     }
@@ -55,6 +59,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
   const setDataset = useCallback(
     (id) => {
       if (approach === 'dynamic-client') {
+        setVariable(id ? datasets.find((d) => d.id === id).variables[0] : null)
         router.push({
           pathname: `/dynamic-client/${id ?? ''}`,
         })
@@ -64,7 +69,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
         })
       }
     },
-    [approach, router.query]
+    [approach, router.query, datasets]
   )
 
   return (
@@ -75,6 +80,8 @@ export const AppProvider = ({ dataset, datasets, children }) => {
         dataset,
         setDataset,
         datasets: filteredDatasets,
+        variable,
+        setVariable,
         time,
         setTime,
         clim,

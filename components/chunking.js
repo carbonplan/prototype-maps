@@ -22,7 +22,6 @@ const Chunking = ({ disabled }) => {
           value={dataset?.id}
           key={router.asPath}
         >
-          {!dataset && <option />}
           {datasets.map((d) => (
             <option key={d.id ?? d.id} value={d.id ?? d.id}>
               {d.chunkSize}MB

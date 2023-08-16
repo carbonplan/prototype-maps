@@ -13,6 +13,7 @@ import Projection from './projection'
 import Sharding from './sharding'
 import TimeSeries from './time-series'
 import TimeSlider from './time-slider'
+import Variable from './variable'
 import Version from './version'
 
 const Sidebar = () => {
@@ -55,6 +56,8 @@ const Sidebar = () => {
               <Sharding />
 
               <Chunking />
+
+              <Variable />
             </>
           )}
 

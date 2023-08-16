@@ -12,16 +12,22 @@ const base =
 
 const DynamicClient = ({ dataset }) => {
   const { theme } = useThemeUI()
-  const { time, clim, colormapName, showRegionPicker, setRegionData } =
-    useAppContext()
+  const {
+    time,
+    variable,
+    clim,
+    colormapName,
+    showRegionPicker,
+    setRegionData,
+  } = useAppContext()
   const colormap = useThemedColormap(colormapName)
   const router = useRouter()
 
-  if (!dataset) {
+  if (!dataset || !variable) {
     return <EmptyState />
   }
 
-  const { id, variable, version, projection } = dataset
+  const { id, version, projection } = dataset
 
   return (
     <Map zoom={0} center={[0, 0]} key={router.asPath}>

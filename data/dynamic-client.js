@@ -16,7 +16,7 @@ const UNUSED_ATTRS = {
 
 const SHARED_ATTRS = {
   ...UNUSED_ATTRS,
-  variable: 'tasmax',
+  variables: ['tasmax'],
   selectors: {
     time: DAYS,
   },
