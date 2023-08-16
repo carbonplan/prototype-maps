@@ -1,11 +1,44 @@
-import { AxisLabel, Chart, Grid, TickLabels } from '@carbonplan/charts'
+import {
+  AxisLabel,
+  Chart,
+  Grid,
+  Line,
+  Plot,
+  TickLabels,
+} from '@carbonplan/charts'
 import { Box } from 'theme-ui'
+import { useMemo } from 'react'
+
 import { useAppContext } from './app-context'
 import ExpandingSection from './expanding-section'
 
 const TimeSeries = () => {
-  const { dataset, showRegionPicker, setShowRegionPicker, regionData } =
-    useAppContext()
+  const {
+    dataset,
+    variable,
+    showRegionPicker,
+    setShowRegionPicker,
+    regionData,
+  } = useAppContext()
+
+  const { data, range } = useMemo(() => {
+    if (!regionData?.value || !variable) {
+      return []
+    }
+
+    let range = [Infinity, -Infinity]
+    const data = Object.keys(regionData.value[variable]).map((key) => {
+      const values = regionData.value[variable][key]
+      const filtered = values.filter((d) => d !== 9.969209968386869e36)
+      const sum = filtered.reduce((a, d) => a + d, 0)
+      const value = sum / filtered.length
+
+      range = [Math.min(range[0], value), Math.max(range[1], value)]
+      return [Number(key), value]
+    })
+
+    return { data, range }
+  }, [regionData, variable])
 
   return (
     <ExpandingSection
@@ -20,12 +53,15 @@ const TimeSeries = () => {
         }}
       >
         {regionData?.value && (
-          <Chart x={[0, 10]} y={[0, 100]}>
+          <Chart x={[0, dataset.timeChunks - 1]} y={range}>
             <Grid horizontal />
             <Grid vertical />
             <TickLabels left bottom />
-            <AxisLabel left>{dataset.variable}</AxisLabel>
+            <AxisLabel left>{variable}</AxisLabel>
             <AxisLabel bottom>Time step</AxisLabel>
+            <Plot>
+              <Line data={data} />
+            </Plot>
           </Chart>
         )}
       </Box>

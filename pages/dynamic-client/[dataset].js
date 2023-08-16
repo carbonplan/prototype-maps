@@ -1,10 +1,11 @@
 import { useThemeUI } from 'theme-ui'
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 import { Map, Raster, Fill, Line, RegionPicker } from '@carbonplan/maps'
 import { useThemedColormap } from '@carbonplan/colormaps'
 import { useAppContext } from '../../components/app-context'
 import { DATASETS } from '../../data/dynamic-client'
 import EmptyState from '../../components/empty-state'
-import { useRouter } from 'next/router'
 
 const bucket = 'https://storage.googleapis.com/carbonplan-maps/'
 const base =
@@ -20,14 +21,25 @@ const DynamicClient = ({ dataset }) => {
     showRegionPicker,
     setRegionData,
   } = useAppContext()
+  const { id, version, projection } = dataset || {}
   const colormap = useThemedColormap(colormapName)
   const router = useRouter()
+  const selector = useMemo(() => {
+    if (!dataset) {
+      return null
+    }
+
+    const start = Math.floor(time / dataset.timeChunks) * dataset.timeChunks
+    return {
+      time: Array(dataset.timeChunks)
+        .fill(null)
+        .map((d, i) => start + i),
+    }
+  }, [dataset, time])
 
   if (!dataset || !variable) {
     return <EmptyState />
   }
-
-  const { id, version, projection } = dataset
 
   return (
     <Map zoom={0} center={[0, 0]} key={router.asPath}>
@@ -50,7 +62,7 @@ const DynamicClient = ({ dataset }) => {
         variable={variable}
         version={version}
         projection={projection}
-        selector={{ time }}
+        selector={selector}
         regionOptions={{ setData: setRegionData }}
       />
       {showRegionPicker && (

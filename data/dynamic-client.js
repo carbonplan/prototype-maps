@@ -29,6 +29,7 @@ export const DATASETS = [
     id: 'pyramids-v2-3857-1MB',
     version: 'v2',
     chunkSize: 1,
+    timeChunks: 10,
     projection: 'mercator',
   },
   {
@@ -36,6 +37,7 @@ export const DATASETS = [
     id: 'pyramids-v2-3857-5MB',
     version: 'v2',
     chunkSize: 5,
+    timeChunks: 73,
     projection: 'mercator',
   },
   {
@@ -43,6 +45,7 @@ export const DATASETS = [
     id: 'pyramids-v2-3857-10MB',
     version: 'v2',
     chunkSize: 10,
+    timeChunks: 146,
     projection: 'mercator',
   },
   {
@@ -50,6 +53,7 @@ export const DATASETS = [
     id: 'pyramids-v2-3857-25MB',
     version: 'v2',
     chunkSize: 25,
+    timeChunks: 365,
     projection: 'mercator',
   },
   {
@@ -57,6 +61,7 @@ export const DATASETS = [
     id: 'pyramids-v3-sharded-4326-1MB',
     version: 'v3',
     chunkSize: 1,
+    timeChunks: 10,
     projection: 'equirectangular',
   },
   {
@@ -64,6 +69,7 @@ export const DATASETS = [
     id: 'pyramids-v3-sharded-4326-5MB',
     version: 'v3',
     chunkSize: 5,
+    timeChunks: 73,
     projection: 'equirectangular',
   },
   {
@@ -71,6 +77,7 @@ export const DATASETS = [
     id: 'pyramids-v3-sharded-4326-10MB',
     version: 'v3',
     chunkSize: 10,
+    timeChunks: 146,
     projection: 'equirectangular',
   },
   {
@@ -78,6 +85,7 @@ export const DATASETS = [
     id: 'pyramids-v3-sharded-4326-25MB',
     version: 'v3',
     chunkSize: 25,
+    timeChunks: 365,
     projection: 'equirectangular',
   },
 ]
