@@ -1,15 +1,16 @@
-import { useState } from 'react'
 import { useThemeUI } from 'theme-ui'
 import { Map, Raster, Fill, Line, RegionPicker } from '@carbonplan/maps'
 import { useThemedColormap } from '@carbonplan/colormaps'
 import { useAppContext } from '../../components/app-context'
-import { V2_DATASETS, V3_DATASETS } from '../../data/dynamic-client'
+import { DATASETS } from '../../data/dynamic-client'
 import EmptyState from '../../components/empty-state'
 import { useRouter } from 'next/router'
 
 const bucket = 'https://storage.googleapis.com/carbonplan-maps/'
+const base =
+  'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/'
 
-const DynamicClient = ({ version, dataset }) => {
+const DynamicClient = ({ dataset }) => {
   const { theme } = useThemeUI()
   const { time, clim, colormapName, showRegionPicker, setRegionData } =
     useAppContext()
@@ -20,7 +21,7 @@ const DynamicClient = ({ version, dataset }) => {
     return <EmptyState />
   }
 
-  const { source, variable } = dataset
+  const { id, variable, version, projection } = dataset
 
   return (
     <Map zoom={0} center={[0, 0]} key={router.asPath}>
@@ -35,14 +36,14 @@ const DynamicClient = ({ version, dataset }) => {
         variable={'land'}
       />
       <Raster
-        key={source}
+        key={id}
         colormap={colormap}
         clim={clim}
         mode={'texture'}
-        source={source}
+        source={base + id}
         variable={variable}
         version={version}
-        projection={version === 'v3' ? 'equirectangular' : 'mercator'}
+        projection={projection}
         selector={{ time }}
         regionOptions={{ setData: setRegionData }}
       />
@@ -63,41 +64,21 @@ export default DynamicClient
 
 export function getStaticPaths() {
   return {
-    paths: [
-      ...V2_DATASETS.map((d) => ({
-        params: {
-          slug: ['v2', d.id],
-        },
-      })),
-      ...V3_DATASETS.map((d) => ({
-        params: {
-          slug: ['v3', d.id],
-        },
-      })),
-      {
-        params: {
-          slug: ['v2'],
-        },
+    paths: DATASETS.map((d) => ({
+      params: {
+        dataset: d.id,
       },
-      {
-        params: {
-          slug: ['v3'],
-        },
-      },
-    ],
+    })),
     fallback: false,
   }
 }
 
-export function getStaticProps({ params: { slug } }) {
-  const [version, id] = slug
-  const datasets = version === 'v3' ? V3_DATASETS : V2_DATASETS
+export function getStaticProps({ params: { dataset } }) {
   return {
     props: {
-      id: `Zarr ${version}`,
-      version,
-      dataset: datasets.find((d) => d.id === id) ?? null,
-      datasets: datasets,
+      id: 'Dynamic client',
+      dataset: DATASETS.find((d) => d.id === dataset) ?? null,
+      datasets: DATASETS,
     },
   }
 }

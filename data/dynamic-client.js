@@ -1,95 +1,83 @@
 const DAYS = [0, 729]
 
-export const V2_DATASETS = [
-  {
-    id: '1MB-chunks',
-    source:
-      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v2-3857-1MB',
-    clim: [220, 320],
-    variable: 'tasmax',
-    selectors: {
-      // non-spatial dimensions
-      time: DAYS,
-    },
-  },
-  {
-    id: '5MB-chunks',
-    source:
-      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v2-3857-5MB',
-    clim: [220, 320],
-    variable: 'tasmax',
-    selectors: {
-      // non-spatial dimensions
-      time: DAYS,
-    },
-  },
-  {
-    id: '10MB-chunks',
-    source:
-      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v2-3857-10MB',
-    clim: [220, 320],
-    variable: 'tasmax',
-    selectors: {
-      // non-spatial dimensions
-      time: DAYS,
-    },
-  },
-  {
-    id: '25MB-chunks',
-    source:
-      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v2-3857-25MB',
-    clim: [220, 320],
-    variable: 'tasmax',
-    selectors: {
-      // non-spatial dimensions
-      time: DAYS,
-    },
-  },
-]
+const UNUSED_ATTRS = {
+  pyramids: true,
+  consolidatedMetadata: true,
+  compressor: 'gzip',
+  pixelsPerTile: 128,
+  dtype: 'f4',
+  shardOrientation: 'space',
+  coordinateChunking: 0,
+  coordinateSharding: 1,
+  inflevel: 99,
+  gcm: 'ACCESS-CM2',
+  shardSize: 100, // only applicable for v3 data
+}
 
-export const V3_DATASETS = [
+const SHARED_ATTRS = {
+  ...UNUSED_ATTRS,
+  variable: 'tasmax',
+  selectors: {
+    time: DAYS,
+  },
+  clim: [220, 320],
+}
+
+export const DATASETS = [
   {
-    id: '1MB-chunks',
-    source:
-      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v3-sharded-4326-1MB',
-    clim: [220, 320],
-    variable: 'tasmax',
-    selectors: {
-      // non-spatial dimensions
-      time: DAYS,
-    },
+    ...SHARED_ATTRS,
+    id: 'pyramids-v2-3857-1MB',
+    version: 'v2',
+    chunkSize: 1,
+    projection: 'mercator',
   },
   {
-    id: '5MB-chunks',
-    source:
-      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v3-sharded-4326-5MB',
-    clim: [220, 320],
-    variable: 'tasmax',
-    selectors: {
-      // non-spatial dimensions
-      time: DAYS,
-    },
+    ...SHARED_ATTRS,
+    id: 'pyramids-v2-3857-5MB',
+    version: 'v2',
+    chunkSize: 5,
+    projection: 'mercator',
   },
   {
-    id: '10MB-chunks',
-    source:
-      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v3-sharded-4326-10MB',
-    clim: [220, 320],
-    variable: 'tasmax',
-    selectors: {
-      // non-spatial dimensions
-      time: DAYS,
-    },
+    ...SHARED_ATTRS,
+    id: 'pyramids-v2-3857-10MB',
+    version: 'v2',
+    chunkSize: 10,
+    projection: 'mercator',
   },
   {
-    id: '25MB-chunks',
-    source:
-      'https://carbonplan-benchmarks.s3.us-west-2.amazonaws.com/data/NEX-GDDP-CMIP6/ACCESS-CM2/historical/r1i1p1f1/tasmax/tasmax_day_ACCESS-CM2_historical_r1i1p1f1_gn/pyramids-v3-sharded-4326-25MB',
-    clim: [220, 320],
-    variable: 'tasmax',
-    selectors: {
-      // non-spatial dimensions
-      time: DAYS,
-    },
+    ...SHARED_ATTRS,
+    id: 'pyramids-v2-3857-25MB',
+    version: 'v2',
+    chunkSize: 25,
+    projection: 'mercator',
+  },
+  {
+    ...SHARED_ATTRS,
+    id: 'pyramids-v3-sharded-4326-1MB',
+    version: 'v3',
+    chunkSize: 1,
+    projection: 'equirectangular',
+  },
+  {
+    ...SHARED_ATTRS,
+    id: 'pyramids-v3-sharded-4326-5MB',
+    version: 'v3',
+    chunkSize: 5,
+    projection: 'equirectangular',
+  },
+  {
+    ...SHARED_ATTRS,
+    id: 'pyramids-v3-sharded-4326-10MB',
+    version: 'v3',
+    chunkSize: 10,
+    projection: 'equirectangular',
+  },
+  {
+    ...SHARED_ATTRS,
+    id: 'pyramids-v3-sharded-4326-25MB',
+    version: 'v3',
+    chunkSize: 25,
+    projection: 'equirectangular',
   },
 ]

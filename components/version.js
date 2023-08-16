@@ -2,9 +2,7 @@ import { Column, Row, Select } from '@carbonplan/components'
 import { useAppContext } from './app-context'
 
 const Version = () => {
-  const { approach, version, setVersion } = useAppContext()
-
-  if (approach !== 'dynamic-client') return null
+  const { version, setDataset, setVersion } = useAppContext()
 
   return (
     <Row columns={3}>
@@ -12,7 +10,13 @@ const Version = () => {
         Zarr version
       </Column>
       <Column start={2} width={2}>
-        <Select onChange={(e) => setVersion(e.target.value)} value={version}>
+        <Select
+          onChange={(e) => {
+            setVersion(e.target.value)
+            setDataset(null)
+          }}
+          value={version}
+        >
           <option value={'v2'}>v2</option>
           <option value={'v3'}>v3</option>
         </Select>
