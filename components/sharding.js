@@ -3,18 +3,13 @@ import { useMemo } from 'react'
 import { Box } from 'theme-ui'
 
 import { useAppContext } from './app-context'
-import { DATASETS } from '../data/dynamic-client'
 
 const Sharding = () => {
-  const { version, projection, shardSize, setShardSize } = useAppContext()
+  const { version, datasets, shardSize, setShardSize } = useAppContext()
 
   const shardSizes = useMemo(() => {
-    return Array.from(
-      DATASETS.filter(
-        (d) => d.version === version && d.projection === projection
-      ).reduce((a, d) => a.add(d.shardSize), new Set())
-    )
-  }, [version, projection])
+    return Array.from(datasets.reduce((a, d) => a.add(d.shardSize), new Set()))
+  }, [datasets])
 
   return (
     <Row columns={3}>

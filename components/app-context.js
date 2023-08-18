@@ -30,6 +30,9 @@ export const AppProvider = ({ dataset, datasets, children }) => {
   const [approach] = router.pathname.split('/').filter(Boolean)
 
   const filteredDatasets = useMemo(() => {
+    if (!datasets) {
+      return
+    }
     return datasets.filter((d) => {
       if (version && d.version !== version) {
         return false
