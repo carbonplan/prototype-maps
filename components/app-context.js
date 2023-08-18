@@ -30,17 +30,29 @@ export const AppProvider = ({ dataset, datasets, children }) => {
   const [approach] = router.pathname.split('/').filter(Boolean)
 
   const filteredDatasets = useMemo(() => {
-    if (!version) {
-      return datasets
+    if (!datasets) {
+      return
     }
-    return datasets.filter((d) => d.version === version)
-  }, [datasets, version])
+    return datasets.filter((d) => {
+      if (version && d.version !== version) {
+        return false
+      } else if (projection && d.projection !== projection) {
+        return false
+      } else if (shardSize && d.shardSize !== Number(shardSize)) {
+        return false
+      }
+
+      return true
+    })
+  }, [datasets, version, projection, shardSize])
 
   useEffect(() => {
     if (dataset?.selectors?.time) {
       setTime(dataset?.selectors?.time[0])
       setClim(dataset?.clim)
       setVersion(dataset?.version)
+      setProjection(dataset?.projection)
+      setShardSize(dataset?.shardSize)
       setShowRegionPicker(false)
       setRegionData({ loading: true })
     }

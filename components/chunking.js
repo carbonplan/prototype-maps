@@ -1,10 +1,22 @@
 import { Column, Row, Select } from '@carbonplan/components'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { useAppContext } from './app-context'
 
 const Chunking = ({ disabled }) => {
   const router = useRouter()
   const { dataset, setDataset, datasets } = useAppContext()
+
+  useEffect(() => {
+    if (!dataset && datasets.length > 0) {
+      setDataset(datasets[0].id)
+    } else if (
+      datasets.length > 0 &&
+      !datasets.find((d) => d.id === dataset.id)
+    ) {
+      setDataset(null)
+    }
+  }, [dataset, datasets])
 
   if (!datasets) {
     return null
@@ -23,7 +35,7 @@ const Chunking = ({ disabled }) => {
           key={router.asPath}
         >
           {datasets.map((d) => (
-            <option key={d.id ?? d.id} value={d.id ?? d.id}>
+            <option key={d.id} value={d.id}>
               {d.chunkSize}MB
             </option>
           ))}
