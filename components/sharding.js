@@ -24,7 +24,7 @@ const Sharding = () => {
       <Column start={2} width={2}>
         {version === 'v3' ? (
           <Select
-            onChange={(e) => setShardSize(e.target.value)}
+            onChange={(e) => setShardSize(Number(e.target.value))}
             value={shardSize}
           >
             {shardSizes.map((p) => (

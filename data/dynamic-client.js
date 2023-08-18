@@ -11,7 +11,6 @@ const UNUSED_ATTRS = {
   coordinateSharding: 1,
   inflevel: 99,
   gcm: 'ACCESS-CM2',
-  shardSize: 100, // only applicable for v3 data
 }
 
 const SHARED_ATTRS = {
@@ -21,6 +20,7 @@ const SHARED_ATTRS = {
     time: DAYS,
   },
   clim: [220, 320],
+  shardSize: 100, // only applicable for v3 data
 }
 
 export const DATASETS = [
@@ -157,6 +157,7 @@ export const DATASETS = [
     id: 'pyramids-v3-4326-1MB',
     version: 'v3',
     chunkSize: 1,
+    shardSize: 1,
     timeChunks: 10,
     projection: 'equirectangular',
   },
@@ -165,6 +166,7 @@ export const DATASETS = [
     id: 'pyramids-v3-4326-5MB',
     version: 'v3',
     chunkSize: 5,
+    shardSize: 5,
     timeChunks: 73,
     projection: 'equirectangular',
   },
@@ -173,6 +175,7 @@ export const DATASETS = [
     id: 'pyramids-v3-4326-10MB',
     version: 'v3',
     chunkSize: 10,
+    shardSize: 10,
     timeChunks: 146,
     projection: 'equirectangular',
   },
@@ -181,6 +184,7 @@ export const DATASETS = [
     id: 'pyramids-v3-4326-25MB',
     version: 'v3',
     chunkSize: 25,
+    shardSize: 25,
     timeChunks: 365,
     projection: 'equirectangular',
   },
@@ -189,6 +193,7 @@ export const DATASETS = [
     id: 'pyramids-v3-3857-1MB',
     version: 'v3',
     chunkSize: 1,
+    shardSize: 1,
     timeChunks: 10,
     projection: 'mercator',
   },
@@ -197,6 +202,7 @@ export const DATASETS = [
     id: 'pyramids-v3-3857-5MB',
     version: 'v3',
     chunkSize: 5,
+    shardSize: 5,
     timeChunks: 73,
     projection: 'mercator',
   },
@@ -205,6 +211,7 @@ export const DATASETS = [
     id: 'pyramids-v3-3857-10MB',
     version: 'v3',
     chunkSize: 10,
+    shardSize: 10,
     timeChunks: 146,
     projection: 'mercator',
   },
@@ -213,6 +220,7 @@ export const DATASETS = [
     id: 'pyramids-v3-3857-25MB',
     version: 'v3',
     chunkSize: 25,
+    shardSize: 25,
     timeChunks: 365,
     projection: 'mercator',
   },
