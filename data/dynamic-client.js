@@ -2,7 +2,6 @@ const DAYS = [0, 729]
 
 const UNUSED_ATTRS = {
   pyramids: true,
-  consolidatedMetadata: true,
   compressor: 'gzip',
   pixelsPerTile: 128,
   dtype: 'f4',
@@ -31,6 +30,7 @@ export const DATASETS = [
     chunkSize: 1,
     timeChunks: 10,
     projection: 'mercator',
+    consolidatedMetadata: true,
   },
   {
     ...SHARED_ATTRS,
@@ -39,6 +39,7 @@ export const DATASETS = [
     chunkSize: 5,
     timeChunks: 73,
     projection: 'mercator',
+    consolidatedMetadata: true,
   },
   {
     ...SHARED_ATTRS,
@@ -47,6 +48,8 @@ export const DATASETS = [
     chunkSize: 10,
     timeChunks: 146,
     projection: 'mercator',
+    consolidatedMetadata: true,
+
   },
   {
     ...SHARED_ATTRS,
@@ -55,6 +58,7 @@ export const DATASETS = [
     chunkSize: 25,
     timeChunks: 365,
     projection: 'mercator',
+    consolidatedMetadata: true,
   },
   {
     ...SHARED_ATTRS,
@@ -63,6 +67,7 @@ export const DATASETS = [
     chunkSize: 1,
     timeChunks: 10,
     projection: 'equirectangular',
+    consolidatedMetadata: true,
   },
   {
     ...SHARED_ATTRS,
@@ -71,6 +76,7 @@ export const DATASETS = [
     chunkSize: 5,
     timeChunks: 73,
     projection: 'equirectangular',
+    consolidatedMetadata: true,
   },
   {
     ...SHARED_ATTRS,
@@ -79,6 +85,7 @@ export const DATASETS = [
     chunkSize: 10,
     timeChunks: 146,
     projection: 'equirectangular',
+    consolidatedMetadata: true,
   },
   {
     ...SHARED_ATTRS,
@@ -87,6 +94,7 @@ export const DATASETS = [
     chunkSize: 25,
     timeChunks: 365,
     projection: 'equirectangular',
+    consolidatedMetadata: true,
   },
   {
     ...SHARED_ATTRS,
@@ -95,6 +103,7 @@ export const DATASETS = [
     chunkSize: 1,
     timeChunks: 10,
     projection: 'equirectangular',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -103,6 +112,7 @@ export const DATASETS = [
     chunkSize: 5,
     timeChunks: 73,
     projection: 'equirectangular',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -111,6 +121,7 @@ export const DATASETS = [
     chunkSize: 10,
     timeChunks: 146,
     projection: 'equirectangular',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -119,6 +130,7 @@ export const DATASETS = [
     chunkSize: 25,
     timeChunks: 365,
     projection: 'equirectangular',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -127,6 +139,7 @@ export const DATASETS = [
     chunkSize: 1,
     timeChunks: 10,
     projection: 'mercator',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -135,6 +148,7 @@ export const DATASETS = [
     chunkSize: 5,
     timeChunks: 73,
     projection: 'mercator',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -143,6 +157,7 @@ export const DATASETS = [
     chunkSize: 10,
     timeChunks: 146,
     projection: 'mercator',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -151,6 +166,7 @@ export const DATASETS = [
     chunkSize: 25,
     timeChunks: 365,
     projection: 'mercator',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -160,6 +176,7 @@ export const DATASETS = [
     shardSize: 1,
     timeChunks: 10,
     projection: 'equirectangular',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -169,6 +186,7 @@ export const DATASETS = [
     shardSize: 5,
     timeChunks: 73,
     projection: 'equirectangular',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -178,6 +196,7 @@ export const DATASETS = [
     shardSize: 10,
     timeChunks: 146,
     projection: 'equirectangular',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -187,6 +206,7 @@ export const DATASETS = [
     shardSize: 25,
     timeChunks: 365,
     projection: 'equirectangular',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -196,6 +216,7 @@ export const DATASETS = [
     shardSize: 1,
     timeChunks: 10,
     projection: 'mercator',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -205,6 +226,7 @@ export const DATASETS = [
     shardSize: 5,
     timeChunks: 73,
     projection: 'mercator',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -214,6 +236,7 @@ export const DATASETS = [
     shardSize: 10,
     timeChunks: 146,
     projection: 'mercator',
+    consolidatedMetadata: false,
   },
   {
     ...SHARED_ATTRS,
@@ -223,5 +246,6 @@ export const DATASETS = [
     shardSize: 25,
     timeChunks: 365,
     projection: 'mercator',
+    consolidatedMetadata: false,
   },
 ]
