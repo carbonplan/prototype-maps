@@ -9,7 +9,7 @@ const UNUSED_ATTRS = {
   shardOrientation: 'space',
   coordinateChunking: 0,
   coordinateSharding: 1,
-  inflevel: 99,
+  inflevel: 100,
   gcm: 'ACCESS-CM2',
 }
 
