@@ -30,17 +30,29 @@ export const AppProvider = ({ dataset, datasets, children }) => {
   const [approach] = router.pathname.split('/').filter(Boolean)
 
   const filteredDatasets = useMemo(() => {
-    if (!version) {
-      return datasets
+    if (!datasets) {
+      return
     }
-    return datasets.filter((d) => d.version === version)
-  }, [datasets, version])
+    return datasets.filter((d) => {
+      if (version && d.version !== version) {
+        return false
+      } else if (projection && d.projection !== projection) {
+        return false
+      } else if (shardSize && d.shardSize !== Number(shardSize)) {
+        return false
+      }
+
+      return true
+    })
+  }, [datasets, version, projection, shardSize])
 
   useEffect(() => {
     if (dataset?.selectors?.time) {
       setTime(dataset?.selectors?.time[0])
       setClim(dataset?.clim)
       setVersion(dataset?.version)
+      setProjection(dataset?.projection)
+      setShardSize(dataset?.shardSize)
       setShowRegionPicker(false)
       setRegionData({ loading: true })
     }
@@ -48,7 +60,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
 
   const setApproach = useCallback((a) => {
     if (a === 'dynamic-client') {
-      const id = 'pyramids-v3-sharded-4326-1MB'
+      const id = 'pyramids-v2-3857-True-128-1-0-0-f4-0-0-0-gzipL1-100'
       setVariable(DATASETS.find((d) => d.id === id).variables[0])
       router.push(`/dynamic-client/${id}`)
     } else {
