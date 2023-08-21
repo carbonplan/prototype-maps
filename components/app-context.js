@@ -60,7 +60,7 @@ export const AppProvider = ({ dataset, datasets, children }) => {
 
   const setApproach = useCallback((a) => {
     if (a === 'dynamic-client') {
-      const id = 'pyramids-v3-sharded-4326-1MB'
+      const id = 'pyramids-v2-3857-True-128-1-0-0-f4-0-0-0-gzipL1-100'
       setVariable(DATASETS.find((d) => d.id === id).variables[0])
       router.push(`/dynamic-client/${id}`)
     } else {
