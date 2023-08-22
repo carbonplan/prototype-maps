@@ -3,13 +3,24 @@ import { useMemo } from 'react'
 import { Box } from 'theme-ui'
 
 import { useAppContext } from './app-context'
+import { DATASETS } from '../data/dynamic-client'
 
 const Sharding = () => {
-  const { version, datasets, shardSize, setShardSize } = useAppContext()
+  const { version, projection, shardSize, setShardSize } = useAppContext()
 
   const shardSizes = useMemo(() => {
-    return Array.from(datasets.reduce((a, d) => a.add(d.shardSize), new Set()))
-  }, [datasets])
+    return Array.from(
+      DATASETS.reduce(
+        (a, d) =>
+          d.version === version &&
+          d.projection === d.projection &&
+          !d.hideInDropdown
+            ? a.add(d.shardSize)
+            : a,
+        new Set()
+      )
+    )
+  }, [version, projection])
 
   return (
     <Row columns={3}>
@@ -24,7 +35,7 @@ const Sharding = () => {
           >
             {shardSizes.map((p) => (
               <option key={p} value={p}>
-                {p}MB
+                {p > 0 ? `${p}MB` : 'none'}
               </option>
             ))}
           </Select>
