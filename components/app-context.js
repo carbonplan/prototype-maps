@@ -38,7 +38,10 @@ export const AppProvider = ({ dataset, datasets, children }) => {
         return false
       } else if (projection && d.projection !== projection) {
         return false
-      } else if (shardSize && d.shardSize !== Number(shardSize)) {
+      } else if (
+        typeof shardSize === 'number' &&
+        d.shardSize !== Number(shardSize)
+      ) {
         return false
       }
 
