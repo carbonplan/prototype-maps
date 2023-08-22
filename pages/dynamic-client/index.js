@@ -9,7 +9,7 @@ export function getStaticProps() {
       // `id` used as prefix for page title
       id: 'Dynamic client',
       // `datasets` for use in sidebar dropdown
-      datasets: DATASETS,
+      datasets: DATASETS.filter((d) => !d.hideInDropdown),
     },
   }
 }

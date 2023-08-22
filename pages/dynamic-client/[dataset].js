@@ -96,7 +96,7 @@ export function getStaticProps({ params: { dataset } }) {
     props: {
       id: 'Dynamic client',
       dataset: DATASETS.find((d) => d.id === dataset) ?? null,
-      datasets: DATASETS,
+      datasets: DATASETS.filter((d) => !d.hideInDropdown),
     },
   }
 }

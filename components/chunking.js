@@ -11,6 +11,7 @@ const Chunking = ({ disabled }) => {
     if (!dataset && datasets.length > 0) {
       setDataset(datasets[0].id)
     } else if (
+      !dataset.hideInDropdown &&
       datasets.length > 0 &&
       !datasets.find((d) => d.id === dataset.id)
     ) {
