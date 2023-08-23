@@ -2,7 +2,8 @@ import { Column, Row, Select } from '@carbonplan/components'
 import { useAppContext } from './app-context'
 
 const Version = () => {
-  const { version, setDataset, setVersion } = useAppContext()
+  const { version, setDataset, setVersion, setProjection, setShardSize } =
+    useAppContext()
 
   return (
     <Row columns={3}>
@@ -14,6 +15,8 @@ const Version = () => {
           onChange={(e) => {
             setVersion(e.target.value)
             setDataset(null)
+            setProjection(null)
+            setShardSize(null)
           }}
           value={version}
         >
