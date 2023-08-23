@@ -62,8 +62,8 @@ const DynamicClient = ({ dataset }) => {
         variable={variable}
         version={version}
         projection={projection}
-        selector={selector}
-        regionOptions={{ setData: setRegionData }}
+        selector={{ time }}
+        regionOptions={{ setData: setRegionData, selector }}
       />
       {showRegionPicker && (
         <RegionPicker

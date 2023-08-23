@@ -54,7 +54,7 @@ export const DATASETS = [
     chunkSize: 5,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -65,7 +65,7 @@ export const DATASETS = [
     chunkSize: 5,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -76,7 +76,7 @@ export const DATASETS = [
     chunkSize: 10,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -87,7 +87,7 @@ export const DATASETS = [
     chunkSize: 10,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -98,7 +98,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 365,
   },
   {
     ...SHARED_ATTRS,
@@ -109,7 +109,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 365,
   },
   {
     ...SHARED_ATTRS,
@@ -121,7 +121,7 @@ export const DATASETS = [
     chunkSize: 1,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 2,
   },
   {
     ...SHARED_ATTRS,
@@ -133,7 +133,7 @@ export const DATASETS = [
     chunkSize: 1,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 2,
   },
   {
     ...SHARED_ATTRS,
@@ -193,7 +193,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -205,7 +205,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: true,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -282,7 +282,7 @@ export const DATASETS = [
     chunkSize: 5,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -293,7 +293,7 @@ export const DATASETS = [
     chunkSize: 5,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -304,7 +304,7 @@ export const DATASETS = [
     chunkSize: 5,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -315,7 +315,7 @@ export const DATASETS = [
     chunkSize: 5,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -326,7 +326,7 @@ export const DATASETS = [
     chunkSize: 5,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -337,7 +337,7 @@ export const DATASETS = [
     chunkSize: 5,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -348,7 +348,7 @@ export const DATASETS = [
     chunkSize: 10,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -359,7 +359,7 @@ export const DATASETS = [
     chunkSize: 10,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -370,7 +370,7 @@ export const DATASETS = [
     chunkSize: 10,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -381,7 +381,7 @@ export const DATASETS = [
     chunkSize: 10,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -392,7 +392,7 @@ export const DATASETS = [
     chunkSize: 10,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -403,7 +403,7 @@ export const DATASETS = [
     chunkSize: 10,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -414,7 +414,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -425,7 +425,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -436,7 +436,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -447,7 +447,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -458,7 +458,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -469,7 +469,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 146,
   },
   {
     ...SHARED_ATTRS,
@@ -481,7 +481,7 @@ export const DATASETS = [
     chunkSize: 1,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 2,
   },
   {
     ...SHARED_ATTRS,
@@ -493,7 +493,7 @@ export const DATASETS = [
     chunkSize: 1,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 2,
   },
   {
     ...SHARED_ATTRS,
@@ -505,7 +505,7 @@ export const DATASETS = [
     chunkSize: 1,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 2,
   },
   {
     ...SHARED_ATTRS,
@@ -517,7 +517,7 @@ export const DATASETS = [
     chunkSize: 1,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 2,
   },
   {
     ...SHARED_ATTRS,
@@ -529,7 +529,7 @@ export const DATASETS = [
     chunkSize: 1,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 2,
   },
   {
     ...SHARED_ATTRS,
@@ -541,7 +541,7 @@ export const DATASETS = [
     chunkSize: 1,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 2,
   },
   {
     ...SHARED_ATTRS,
@@ -697,7 +697,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -709,7 +709,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -721,7 +721,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -733,7 +733,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: false,
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -745,7 +745,7 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 73,
   },
   {
     ...SHARED_ATTRS,
@@ -757,6 +757,6 @@ export const DATASETS = [
     chunkSize: 25,
     consolidatedMetadata: false,
     shardOrientation: 'both',
-    timeChunks: 10,
+    timeChunks: 73,
   },
 ]
