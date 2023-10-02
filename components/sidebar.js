@@ -5,7 +5,7 @@ import {
 } from '@carbonplan/layouts'
 import { Box, Flex } from 'theme-ui'
 import { useAppContext } from './app-context'
-import Approach from './approach'
+// import Approach from './approach'
 import Chunking from './chunking'
 import Customizations from './customizations'
 import Datasets from './datasets'
@@ -34,19 +34,21 @@ const Sidebar = () => {
           </Box>
 
           <Box>
-            This is an interactive demonstration of different visualization
-            approaches for visualizing geospatial data stored in Zarr. For more
+            This is an interactive demonstration of the dynamic client approach
+            for visualizing geospatial data stored in Zarr. For more
             information, read the{' '}
             <Link href='https://nasa-impact.github.io/zarr-visualization-cookbook/'>
               cookbook
             </Link>{' '}
-            or our blog post.
+            or more about{' '}
+            <Link href='https://github.com/carbonplan/maps'>
+              @carbonplan/maps
+            </Link>
+            .
           </Box>
         </Box>
         <SidebarDivider sx={{ my: 4 }} />
         <Flex sx={{ flexDirection: 'column', gap: 4 }}>
-          <Approach />
-
           {approach === 'dynamic-client' && (
             <>
               <Version />

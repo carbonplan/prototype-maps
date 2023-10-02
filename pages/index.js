@@ -1,3 +1,15 @@
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import EmptyState from '../components/empty-state'
 
-export default EmptyState
+const Index = () => {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push('/dynamic-client')
+  }, [])
+
+  return <EmptyState />
+}
+
+export default Index
