@@ -21,11 +21,12 @@ const TimeSeries = () => {
     regionData,
   } = useAppContext()
 
-  const { data, range } = useMemo(() => {
+  const { data, range, domain } = useMemo(() => {
     if (!regionData?.value || !variable) {
       return []
     }
 
+    let domain = [Infinity, -Infinity]
     let range = [Infinity, -Infinity]
     const data = Object.keys(regionData.value[variable]).map((key) => {
       const values = regionData.value[variable][key]
@@ -34,10 +35,11 @@ const TimeSeries = () => {
       const value = sum / filtered.length
 
       range = [Math.min(range[0], value), Math.max(range[1], value)]
+      domain = [Math.min(domain[0], key), Math.max(domain[1], key)]
       return [Number(key), value]
     })
 
-    return { data, range }
+    return { data, range, domain }
   }, [regionData, variable])
 
   return (
@@ -53,7 +55,7 @@ const TimeSeries = () => {
         }}
       >
         {regionData?.value && (
-          <Chart x={[0, dataset.timeChunks - 1]} y={range}>
+          <Chart x={domain} y={range}>
             <Grid horizontal />
             <Grid vertical />
             <TickLabels left bottom />
