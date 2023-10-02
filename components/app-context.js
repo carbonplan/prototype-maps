@@ -56,7 +56,6 @@ export const AppProvider = ({ dataset, datasets, children }) => {
       setVersion(dataset?.version)
       setProjection(dataset?.projection)
       setShardSize(dataset?.shardSize)
-      setShowRegionPicker(false)
       setRegionData({ loading: true })
     }
   }, [!!dataset])

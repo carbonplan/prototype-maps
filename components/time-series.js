@@ -13,17 +13,12 @@ import { useAppContext } from './app-context'
 import ExpandingSection from './expanding-section'
 
 const TimeSeries = () => {
-  const {
-    dataset,
-    variable,
-    showRegionPicker,
-    setShowRegionPicker,
-    regionData,
-  } = useAppContext()
+  const { variable, showRegionPicker, setShowRegionPicker, regionData } =
+    useAppContext()
 
   const { data, range, domain } = useMemo(() => {
     if (!regionData?.value || !variable) {
-      return []
+      return {}
     }
 
     let domain = [Infinity, -Infinity]
@@ -54,7 +49,7 @@ const TimeSeries = () => {
           position: 'relative',
         }}
       >
-        {regionData?.value && (
+        {regionData?.value && domain && (
           <Chart x={domain} y={range}>
             <Grid horizontal />
             <Grid vertical />
