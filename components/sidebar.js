@@ -20,60 +20,52 @@ const Sidebar = () => {
   const { approach, dataset } = useAppContext()
 
   return (
-    <Box
-      sx={{
-        '& div:first-of-type': {
-          borderBottom: 0,
-        },
-      }}
-    >
-      <SidebarComponent expanded>
-        <Box sx={{ mt: -6 }}>
-          <Box as='h1' variant='styles.h4'>
-            Visualizing Zarr data
-          </Box>
-
-          <Box>
-            This is an interactive demonstration of the dynamic client approach
-            for visualizing geospatial data stored in Zarr. For more
-            information, read the{' '}
-            <Link href='https://nasa-impact.github.io/zarr-visualization-cookbook/'>
-              cookbook
-            </Link>{' '}
-            or more about{' '}
-            <Link href='https://github.com/carbonplan/maps'>
-              @carbonplan/maps
-            </Link>
-            .
-          </Box>
+    <SidebarComponent expanded>
+      <Box sx={{ mt: -4 }}>
+        <Box as='h1' variant='styles.h4'>
+          Visualizing Zarr data
         </Box>
-        <SidebarDivider sx={{ my: 4 }} />
-        <Flex sx={{ flexDirection: 'column', gap: 4 }}>
-          {approach === 'dynamic-client' && (
-            <>
-              <Version />
 
-              <Projection />
+        <Box>
+          This is an interactive demonstration of the dynamic client approach
+          for visualizing geospatial data stored in Zarr. For more information,
+          read the{' '}
+          <Link href='https://nasa-impact.github.io/zarr-visualization-cookbook/'>
+            cookbook
+          </Link>{' '}
+          or more about{' '}
+          <Link href='https://github.com/carbonplan/maps'>
+            @carbonplan/maps
+          </Link>
+          .
+        </Box>
+      </Box>
+      <SidebarDivider sx={{ my: 4 }} />
+      <Flex sx={{ flexDirection: 'column', gap: 4 }}>
+        {approach === 'dynamic-client' && (
+          <>
+            <Version />
 
-              <Sharding />
+            <Projection />
 
-              <Chunking />
+            <Sharding />
 
-              <Variable />
-            </>
-          )}
+            <Chunking />
 
-          {approach === 'tiling' && <Datasets />}
+            <Variable />
+          </>
+        )}
 
-          {dataset && <TimeSlider />}
-        </Flex>
-        <SidebarDivider sx={{ my: 4 }} />
-        <Customizations />
-        <SidebarDivider sx={{ my: 4 }} />
-        <TimeSeries />
-        <SidebarDivider sx={{ my: 4 }} />
-      </SidebarComponent>
-    </Box>
+        {approach === 'tiling' && <Datasets />}
+
+        {dataset && <TimeSlider />}
+      </Flex>
+      <SidebarDivider sx={{ my: 4 }} />
+      <Customizations />
+      <SidebarDivider sx={{ my: 4 }} />
+      <TimeSeries />
+      <SidebarDivider sx={{ my: 4 }} />
+    </SidebarComponent>
   )
 }
 
