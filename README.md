@@ -5,16 +5,16 @@
 
 # carbonplan / prototype maps
 
-**⚠️ Work in progress ⚠️ a basic demonstration of different mapping approaches**
+**a demonstration of mapping zarr data with different storage schemes**
 
 [![GitHub][github-badge]][github]
 ![MIT License][]
 
-[github]: https://github.com/carbonplan/design
+[github]: https://github.com/carbonplan/prototype-maps
 [github-badge]: https://flat.badgen.net/badge/-/github?icon=github&label
 [mit license]: https://flat.badgen.net/badge/license/MIT/blue
 
-This repository contains a Next.js app for demonstrating different mapping approaches.
+This repository contains a Next.js app for demonstrating visualization of geospatial data stored in Zarr. For more information about the dynamic client approach, see the [report](https://nasa-impact.github.io/zarr-visualization-report/) or the [@carbonplan/maps](https://github.com/carbonplan/maps) library.
 
 ## usage
 
