@@ -30,8 +30,8 @@ const Sidebar = () => {
           This is an interactive demonstration of the dynamic client approach
           for visualizing geospatial data stored in Zarr. For more information,
           read the{' '}
-          <Link href='https://nasa-impact.github.io/zarr-visualization-cookbook/'>
-            cookbook
+          <Link href='https://nasa-impact.github.io/zarr-visualization-report/'>
+            report
           </Link>{' '}
           or more about{' '}
           <Link href='https://github.com/carbonplan/maps'>
